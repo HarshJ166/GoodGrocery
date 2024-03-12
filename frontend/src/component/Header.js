@@ -24,7 +24,7 @@ const Header = () => {
   const cartItemNumber = useSelector((state) => state.product.cartItem);
 
   return (
-    <header className="fixed shadow-md w-full h-24 px-2 md:px-4 z-50 bg-white">
+    <header className="fixed shadow-md w-full h-20 px-4 md:px-4 z-50 bg-white">
       <div className="flex items-center h-full justify-between">
         <Link to={"/"}>
           <div className="h-24">
@@ -32,7 +32,7 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="text-5xl text-slate-10000 -custom font">
+        <div class="text-5xl text-slate-10000 font-semibold text-center font-Roboto">
           Good Grocery
         </div>
 

@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const HomeCard = ({ name, image, category, price, loading, id }) => {
+const HomeCard = ({
+  name,
+  image,
+  category,
+  price,
+  loading,
+  id,
+  description,
+}) => {
   return (
     <div className="bg-white shadow-md p-2 rounded min-w-[150px]">
       {name ? (
@@ -21,6 +29,9 @@ const HomeCard = ({ name, image, category, price, loading, id }) => {
               <span className="text-red-500">₹</span>
               <span>{price}</span>
             </p>
+            <h3 className="font-semibold text-slate-1000 text-center capitalize text-0.5g">
+              {description}
+            </h3>
           </Link>
         </>
       ) : (

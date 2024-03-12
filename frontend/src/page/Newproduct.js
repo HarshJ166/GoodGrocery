@@ -22,6 +22,16 @@ const Newproduct = () => {
       };
     });
   };
+  const description = (e) => {
+    const { description, value } = e.target;
+
+    setData((preve) => {
+      return {
+        ...preve,
+        [description]: value,
+      };
+    });
+  };
 
   const uploadImage = async (e) => {
     const data = await ImagetoBase64(e.target.files[0]);
@@ -39,9 +49,9 @@ const Newproduct = () => {
     e.preventDefault();
     console.log(data);
 
-    const { name, image, category, price } = data;
+    const { name, image, category, price, description } = data;
 
-    if (name && image && category && price) {
+    if (name && image && category && price && description) {
       const fetchData = await fetch(
         `${process.env.REACT_APP_SERVER_DOMIN}/uploadProduct`,
         {
@@ -137,7 +147,7 @@ const Newproduct = () => {
 
         <label htmlFor="description">Description</label>
         <textarea
-          rows={2}
+          rows={10}
           value={data.description}
           className="bg-slate-200 p-1 my-1 resize-none"
           name="description"

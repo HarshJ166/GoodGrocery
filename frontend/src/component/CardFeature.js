@@ -4,7 +4,15 @@ import { Link } from "react-router-dom";
 import { addCartItem } from "../redux/productSlide";
 import PropTypes from "prop-types";
 
-const CardFeature = ({ image, name, price, category, loading, id }) => {
+const CardFeature = ({
+  image,
+  name,
+  price,
+  category,
+  loading,
+  id,
+  description,
+}) => {
   const dispatch = useDispatch();
 
   const handleAddCartProduct = () => {
@@ -15,12 +23,13 @@ const CardFeature = ({ image, name, price, category, loading, id }) => {
         price: price,
         category: category,
         image: image,
+        description: description,
       })
     );
   };
 
   return (
-    <div className="w-full min-w-[150px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col ninja">
+    <div className="w-full min-w-[350px] max-w-[400px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col ninja">
       {image ? (
         <>
           <Link
@@ -31,7 +40,7 @@ const CardFeature = ({ image, name, price, category, loading, id }) => {
               <img src={image} alt={name} className="h-full" />{" "}
               {/* Add alt text for accessibility */}
             </div>
-            <h3 className="font-semibold text-slate-600 capitalize text-lg mt-4 whitespace-nowrap overflow-hidden">
+            <h3 className="font-bold text-slate-600 capitalize text-lg mt-6 whitespace-nowrap overflow-hidden">
               {name}
             </h3>
             <p className="text-slate-500 font-medium">{category}</p>
@@ -39,6 +48,9 @@ const CardFeature = ({ image, name, price, category, loading, id }) => {
               <span className="text-red-500">₹</span>
               <span>{price}</span>
             </p>
+            <h3 className="font-medium text-slate-1000 capitalize text-0.5g">
+              {description}
+            </h3>
           </Link>
           <button
             className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full"
@@ -63,6 +75,7 @@ CardFeature.propTypes = {
   category: PropTypes.string,
   loading: PropTypes.string,
   id: PropTypes.string,
+  description: PropTypes.string,
 };
 
 export default CardFeature;

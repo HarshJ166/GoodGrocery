@@ -1,11 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import CardFeature from "../component/CardFeature";
 import HomeCard from "../component/HomeCard";
-import { GrPrevious, GrNext } from "react-icons/gr";
-// import FilterProduct from "../component/FilterProduct";
 import AllProduct from "../component/AllProduct";
-// import Cart from "./Cart";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -16,24 +13,26 @@ const Home = () => {
   );
 
   const slideProductRef = useRef();
-  const nextProduct = () => {
-    slideProductRef.current.scrollLeft += 200;
-  };
-  const preveProduct = () => {
-    slideProductRef.current.scrollLeft -= 200;
-  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      slideProductRef.current.scrollLeft += 2; // Smooth scroll
+      if (
+        slideProductRef.current.scrollLeft >=
+        slideProductRef.current.scrollWidth -
+          slideProductRef.current.clientWidth
+      ) {
+        slideProductRef.current.scrollLeft = 0; // Jump back to the beginning
+      }
+    }, 30); // Adjust the interval time as needed
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <div className="p-4 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800">
-      <div className="md:flex gap-4 py-4">
-        <div className="md:w-1/2">
-          {/* <div className=">
-            <p className="text-sm font-semibold">Deliver the Good in Food</p>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png"
-              className="h-7 ml-2"
-              al
-          </div> */}
+    <div className="p-4 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800 overflow-hidden">
+      <div className="md:flex gap-3 py-2">
+        <div className="md:w-1/4">
           <h2 className="text-4xl md:text-5xl font-bold py-4">
             Fresh Grocery Delivered Fast
           </h2>
@@ -47,7 +46,7 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="md:w-1/2 grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 p-2">
+        <div className="md:w-1/2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-5">
           {homeProductCartList.map((el) => (
             <HomeCard
               key={el._id}
@@ -62,28 +61,25 @@ const Home = () => {
       </div>
 
       <div className="mb-8">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Fresh Vegetables</h2>
-          <div className="flex gap-4">
-            <button
-              onClick={preveProduct}
-              className="bg-gray-200 hover:bg-gray-300 text-lg p-2 rounded-full"
-            >
-              <GrPrevious />
-            </button>
-            <button
-              onClick={nextProduct}
-              className="bg-gray-200 hover:bg-gray-300 text-lg p-2 rounded-full"
-            >
-              <GrNext />
-            </button>
-          </div>
-        </div>
-        <div className="flex gap-4 overflow-x-auto p-4" ref={slideProductRef}>
+        <h2 className="text-2xl font-semibold pt-7 text-center">
+          Fresh Vegetables
+        </h2>
+        <div className="flex gap-4 p-6 overflow-x-hidden" ref={slideProductRef}>
           {homeProductCartListVegetables.map((el) => (
             <CardFeature
               key={el._id}
               id={el._id}
+              name={el.name}
+              category={el.category}
+              price={el.price}
+              image={el.image}
+            />
+          ))}
+          {/* Duplicate the cards to create the circular effect */}
+          {homeProductCartListVegetables.map((el) => (
+            <CardFeature
+              key={el._id + "-copy"}
+              id={el._id + "-copy"}
               name={el.name}
               category={el.category}
               price={el.price}

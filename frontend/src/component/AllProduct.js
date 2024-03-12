@@ -25,7 +25,7 @@ const AllProduct = ({ heading }) => {
     });
   };
 
-  const loadingArrayFeature = new Array(15).fill(null);
+  const loadingArrayFeature = new Array(10).fill(null);
 
   return (
     <div className="my-5">
@@ -50,7 +50,7 @@ const AllProduct = ({ heading }) => {
         )}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-4 my-4">
+      <div className="flex flex-wrap justify-center gap-5 my-5">
         {dataFilter[0]
           ? dataFilter.map((el) => {
               return (
@@ -61,6 +61,7 @@ const AllProduct = ({ heading }) => {
                   name={el.name}
                   category={el.category}
                   price={el.price}
+                  description={el.description}
                 />
               );
             })
