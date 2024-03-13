@@ -5,7 +5,7 @@ const dotenv = require("dotenv").config();
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
 
-const sendMail = require("./sendMail");
+// const sendMail = require("./sendMail");
 
 const app = express();
 const corsOptions = {
@@ -96,7 +96,7 @@ app.post("/login", (req, res) => {
 });
 
 // email
-app.get("/mail", sendMail);
+// app.get("/mail", sendMail);
 
 //product section
 

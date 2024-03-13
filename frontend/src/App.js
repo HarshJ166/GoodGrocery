@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { setDataProduct } from "./redux/productSlide";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+// import EmailRestApi from "../../backend/components/emailRestApi";
 
 function App() {
   const dispatch = useDispatch();

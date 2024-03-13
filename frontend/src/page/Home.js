@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
-  const homeProductCartList = productData.slice(1, 5);
+  const homeProductCartList = productData.slice(1, 7);
   const homeProductCartListVegetables = productData.filter(
     (el) => el.category === "vegetable"
   );
@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="p-4 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800 overflow-hidden">
+    <div className="p-5 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800 overflow-hidden m-0">
       <div className="md:flex gap-3 py-2">
         <div className="md:w-1/4">
           <h2 className="text-4xl md:text-5xl font-bold py-4">
@@ -46,7 +46,7 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="md:w-1/2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 p-5">
+        <div className="md:w-1/2 grid grid-cols-2 md:grid-cols-10 lg:grid-cols-3 gap-10">
           {homeProductCartList.map((el) => (
             <HomeCard
               key={el._id}
@@ -61,7 +61,7 @@ const Home = () => {
       </div>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold pt-7 text-center">
+        <h2 className="text-2xl font-bold pt-7 text-center">
           Fresh Vegetables
         </h2>
         <div className="flex gap-4 p-6 overflow-x-hidden" ref={slideProductRef}>

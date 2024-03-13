@@ -29,7 +29,9 @@ const AllProduct = ({ heading }) => {
 
   return (
     <div className="my-5">
-      <h2 className="font-bold text-2xl text-slate-800 mb-4">{heading}</h2>
+      <h2 className="font-bold text-center text-slate-10000 text-2xl mb-5">
+        {heading}
+      </h2>
 
       <div className="flex gap-4 justify-center overflow-scroll scrollbar-none">
         {categoryList[0] ? (

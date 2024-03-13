@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
+    "dotenv": "^16.4.5",
+    "nodemailer": "^6.9.12",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1"
   }
