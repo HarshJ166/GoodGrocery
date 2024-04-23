@@ -101,11 +101,14 @@ app.post("/login", (req, res) => {
 //product section
 
 const schemaProduct = mongoose.Schema({
-  name: String,
+  product_name: String,
   category: String,
   image: String,
   price: String,
   description: String,
+  product_id: Number,
+  aisle_id: Number,
+  department_id: Number,
 });
 const productModel = mongoose.model("product", schemaProduct);
 

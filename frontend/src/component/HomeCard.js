@@ -8,7 +8,7 @@ const HomeCard = ({
   price,
   loading,
   id,
-  description,
+  // description,
 }) => {
   return (
     <div className="bg-white shadow-md p-2 rounded min-w-[150px]">
@@ -29,9 +29,9 @@ const HomeCard = ({
               <span className="text-red-500">₹</span>
               <span>{price}</span>
             </p>
-            <h3 className="font-semibold text-slate-1000 text-center capitalize text-0.5g">
+            {/* <h3 className="font-semibold text-slate-1000 text-center capitalize text-0.5g">
               {description}
-            </h3>
+            </h3> */}
           </Link>
         </>
       ) : (

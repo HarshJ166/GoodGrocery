@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
-  const homeProductCartList = productData.slice(1, 7);
+  const homeProductCartList = productData.slice(1, 8);
   const homeProductCartListVegetables = productData.filter(
     (el) => el.category === "vegetable"
   );
@@ -46,14 +46,14 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="md:w-1/2 grid grid-cols-2 md:grid-cols-10 lg:grid-cols-3 gap-10">
+        <div className="md:w-1/2 flex md: lg:flex-cols-3 gap-8">
           {homeProductCartList.map((el) => (
             <HomeCard
               key={el._id}
               id={el._id}
               image={el.image}
               name={el.name}
-              price={el.price}
+              price={Number(el.price)}
               category={el.category}
             />
           ))}
@@ -71,7 +71,7 @@ const Home = () => {
               id={el._id}
               name={el.name}
               category={el.category}
-              price={el.price}
+              price={Number(el.price)}
               image={el.image}
             />
           ))}
@@ -82,8 +82,8 @@ const Home = () => {
               id={el._id + "-copy"}
               name={el.name}
               category={el.category}
-              price={el.price}
               image={el.image}
+              price={Number(el.price)}
             />
           ))}
         </div>
