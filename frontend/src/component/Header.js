@@ -32,8 +32,10 @@ const Header = () => {
           </div>
         </Link>
 
-        <div class="text-5xl text-slate-10000 font-semibold text-center font-Roboto">
-          Good Grocery
+        <div className="flex justify-center items-center flex-grow">
+          <div className="text-3xl md:text-5xl text-slate-10000 font-bold custom-font">
+            Good Grocery
+          </div>
         </div>
 
         <div className="flex items-center gap-4 md:gap-7">
