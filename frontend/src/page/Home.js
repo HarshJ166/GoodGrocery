@@ -4,6 +4,7 @@ import CardFeature from "../component/CardFeature";
 import HomeCard from "../component/HomeCard";
 import AllProduct from "../component/AllProduct";
 import { Link } from "react-router-dom";
+import DefaultImage from "../assest/default.jpg";
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
@@ -30,7 +31,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="p-5 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800 overflow-hidden m-0">
+    <div className="p-5 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800 overflow-hidden m-0 custom-font">
       <div className="md:flex gap-3 py-2">
         <div className="md:w-1/2 lg:w-1/3 xl:w-1/4">
           <h2 className="text-4xl md:text-5xl font-bold py-4">
@@ -53,7 +54,7 @@ const Home = () => {
             <HomeCard
               key={el._id}
               id={el._id}
-              image={el.image}
+              image={DefaultImage}
               name={el.name}
               price={Number(el.price)}
               category={el.category}
@@ -74,7 +75,7 @@ const Home = () => {
               name={el.name}
               category={el.category}
               price={Number(el.price)}
-              image={el.image}
+              image={DefaultImage}
             />
           ))}
           {/* Duplicate the cards to create the circular effect */}
@@ -84,7 +85,7 @@ const Home = () => {
               id={el._id + "-copy"}
               name={el.name}
               category={el.category}
-              image={el.image}
+              image={DefaultImage}
               price={Number(el.price)}
             />
           ))}

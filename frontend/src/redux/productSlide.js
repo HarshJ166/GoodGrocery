@@ -28,12 +28,18 @@ export const productSlice = createSlice({
     },
     deleteCartItem: (state, action) => {
       toast("one Item Delete");
-      const index = state.cartItem.findIndex((el) => el._id === action.payload);
+      const index = state.cartItem.findIndex(
+        (el) => el.product_id === action.payload
+      );
       state.cartItem.splice(index, 1);
       console.log(index);
     },
     increaseQty: (state, action) => {
-      const index = state.cartItem.findIndex((el) => el._id === action.payload);
+      const index = state.cartItem.findIndex(
+        (el) => el.product_id === action.payload
+      );
+      console.log(index);
+
       let qty = state.cartItem[index].qty;
       const qtyInc = ++qty;
       state.cartItem[index].qty = qtyInc;
@@ -44,7 +50,9 @@ export const productSlice = createSlice({
       state.cartItem[index].total = total;
     },
     decreaseQty: (state, action) => {
-      const index = state.cartItem.findIndex((el) => el._id === action.payload);
+      const index = state.cartItem.findIndex(
+        (el) => el.product_id === action.payload
+      );
       let qty = state.cartItem[index].qty;
       if (qty > 1) {
         const qtyDec = --qty;

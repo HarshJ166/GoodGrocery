@@ -8,7 +8,17 @@ import {
   decreaseQty,
 } from "../redux/productSlide";
 
-const CartProduct = ({ id, name, image, category, qty, total, price }) => {
+const CartProduct = ({
+  id,
+  name,
+  image,
+  category,
+  qty,
+  total,
+  price,
+  product_id,
+  aisle_id,
+}) => {
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("CartProduct.js");
@@ -25,7 +35,7 @@ const CartProduct = ({ id, name, image, category, qty, total, price }) => {
           </h3>
           <div
             className="cursor-pointer text-slate-700 hover:text-red-500"
-            onClick={() => dispatch(deleteCartItem(id))}
+            onClick={() => dispatch(deleteCartItem(product_id))}
           >
             <AiFillDelete />
           </div>
@@ -38,14 +48,18 @@ const CartProduct = ({ id, name, image, category, qty, total, price }) => {
         <div className="flex justify-between ">
           <div className="flex gap-3 items-center">
             <button
-              onClick={() => dispatch(increaseQty(id))}
+              onClick={() => {
+                dispatch(increaseQty(product_id));
+              }}
               className="bg-slate-300 py-1 mt-2 rounded hover:bg-slate-400 p-1 "
             >
               <TbPlus />
             </button>
             <p className="font-semibold p-1">{qty}</p>
             <button
-              onClick={() => dispatch(decreaseQty(id))}
+              onClick={() => {
+                dispatch(decreaseQty(product_id));
+              }}
               className="bg-slate-300 py-1 mt-2 rounded hover:bg-slate-400 p-1 "
             >
               <TbMinus />

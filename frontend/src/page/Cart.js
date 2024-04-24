@@ -6,6 +6,8 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // Correct Axios import
 import CardFeature from "../component/CardFeature";
+import DefaultImage from "../assest/default.jpg";
+import productSlide from "../redux/productSlide";
 
 const Cart = () => {
   const productCartItem = useSelector((state) => state.product.cartItem);
@@ -84,7 +86,12 @@ const Cart = () => {
           <div className="my-4 flex gap-3">
             <div className="w-full max-w-3xl ">
               {productCartItem.map((el) => (
-                <CartProduct key={el._id} {...el} price={Number(el.price)} />
+                <CartProduct
+                  key={el._id}
+                  {...el}
+                  image={DefaultImage}
+                  price={Number(el.price)}
+                />
               ))}
             </div>
 
@@ -125,7 +132,7 @@ const Cart = () => {
           <CardFeature
             key={xresponse[0].product_id}
             id={xresponse[0].product_id}
-            image={xresponse[0].image}
+            image={DefaultImage}
             name={xresponse[0].product_name_x}
             category={xresponse[0].category}
             price={xresponse[0].price}
@@ -137,7 +144,7 @@ const Cart = () => {
           <CardFeature
             key={xresponse[1].product_id}
             id={xresponse[1].product_id}
-            image={xresponse[1].image}
+            image={DefaultImage}
             name={xresponse[1].product_name_x}
             category={xresponse[1].category}
             price={xresponse[1].price}
@@ -149,7 +156,7 @@ const Cart = () => {
           <CardFeature
             key={xresponse[2].product_id}
             id={xresponse[2].product_id}
-            image={xresponse[2].image}
+            image={DefaultImage}
             name={xresponse[2].product_name_x}
             category={xresponse[2].category}
             price={xresponse[2].price}
@@ -161,7 +168,7 @@ const Cart = () => {
           <CardFeature
             key={xresponse[3].product_id}
             id={xresponse[3].product_id}
-            image={xresponse[3].image}
+            image={DefaultImage}
             name={xresponse[3].product_name_x}
             category={xresponse[3].category}
             price={xresponse[3].price}

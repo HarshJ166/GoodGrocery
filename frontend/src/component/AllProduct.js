@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CardFeature from "./CardFeature";
 import FilterProduct from "./FilterProduct";
+import DefaultImage from "../assest/default.jpg";
 
 const AllProduct = ({ heading }) => {
   const productData = useSelector((state) => state.product.productList);
@@ -63,7 +64,7 @@ const AllProduct = ({ heading }) => {
                 <CardFeature
                   key={el._id}
                   id={el._id}
-                  image={el.image}
+                  image={DefaultImage}
                   name={el.product_name}
                   category={el.category}
                   price={parseInt(el.price)}

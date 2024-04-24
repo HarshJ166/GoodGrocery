@@ -1,48 +1,28 @@
 import React from "react";
 
-const styles = {
-  contactContainer: {
-    maxWidth: "600px",
-    margin: "auto",
-    padding: "40px",
-    border: "3px solid #ccc",
-    borderRadius: "10px",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-  },
-  contactTitle: {
-    fontSize: "40px",
-    fontWeight: "bold",
-    marginBottom: "20px",
-  },
-  contactDetails: {
-    fontSize: "16px",
-    marginBottom: "10px",
-  },
-  linkedinLink: {
-    fontSize: "16px",
-    color: "blue",
-  },
-};
-
 const Contact = () => {
   return (
-    <div style={styles.contactContainer}>
-      <h1 style={styles.contactTitle}>Contact Information</h1>
-      <p style={styles.contactDetails}>
+    <div className="max-w-2xl mx-auto p-6 border border-gray-300 rounded-lg shadow-md custom-font">
+      <h1 className="text-3xl md:text-4xl font-bold mb-6">
+        Contact Information
+      </h1>
+      <p className="text-lg md:text-xl mb-4">
         <strong>Name:</strong> Harsh Jajal
       </p>
-      <p style={styles.contactDetails}>
+      <p className="text-lg md:text-xl mb-4">
         <strong>Email:</strong>{" "}
-        <a href="mailto:harshjajal786@gmail.com">harshjajal786@gmail.com</a>
+        <a href="mailto:harshjajal786@gmail.com" className="text-blue-500">
+          harshjajal786@gmail.com
+        </a>
       </p>
-      <p style={styles.contactDetails}>
+      <p className="text-lg md:text-xl mb-4">
         <strong>Phone No:</strong> +91 9892152003
       </p>
-      <p style={styles.contactDetails}>
+      <p className="text-lg md:text-xl mb-4">
         <strong>LinkedIn:</strong>{" "}
         <a
           href="https://www.linkedin.com/in/harsh-jajal-263170247/"
-          style={styles.linkedinLink}
+          className="text-blue-500"
         >
           Harsh Jajal's LinkedIn
         </a>

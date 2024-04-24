@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+
 orders = pd.read_csv("orders.csv")
 departments = pd.read_csv("departments.csv")
 aisles = pd.read_csv("aisles.csv")

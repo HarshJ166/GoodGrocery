@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addCartItem } from "../redux/productSlide";
 import PropTypes from "prop-types";
+// import Default from "../assest/DefaultImage.jpg";
 
 const CardFeature = ({
   image,
@@ -16,6 +17,7 @@ const CardFeature = ({
   department_id,
 }) => {
   const dispatch = useDispatch();
+  // const DefaultImage = Default;
 
   const handleAddCartProduct = () => {
     dispatch(
