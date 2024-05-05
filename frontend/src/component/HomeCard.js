@@ -11,15 +11,15 @@ const HomeCard = ({
   // description,
 }) => {
   return (
-    <div className="bg-white shadow-md p-2 rounded min-w-[150px]">
+    <div className="bg-white shadow-md p-2 rounded ">
       {name ? (
         <>
           <Link
             to={`/menu/${id}`}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="w-40 min-h-[150px]">
-              <img src={image} alt={name} className="h-full w-full" />
+            <div className="h-28 flex flex-col justify-center items-center">
+              <img src={image} alt={name} className="h-full" />
             </div>
             <h3 className="font-semibold text-slate-600 text-center capitalize text-3g">
               {name}

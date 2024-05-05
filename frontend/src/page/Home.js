@@ -8,10 +8,16 @@ import DefaultImage from "../assest/default.jpg";
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
-  const homeProductCartList = productData.slice(1, 8);
-  const homeProductCartListVegetables = productData.filter(
-    (el) => el.category === "vegetable"
-  );
+  const homeProductCartList1 = productData.slice(1, 5);
+  const homeProductCartList2 = productData.slice(6, 8);
+  const homeProductCartList = [
+    ...homeProductCartList1,
+    ...homeProductCartList2,
+  ];
+  // const homeProductCartListVegetables = productData.filter(
+  //   (el) => el.department_id === 3 || el.department_id === 2
+  // );
+  const homeProductCartListVegetables = productData.slice(1, 21);
 
   const slideProductRef = useRef();
 
@@ -54,39 +60,49 @@ const Home = () => {
             <HomeCard
               key={el._id}
               id={el._id}
-              image={DefaultImage}
-              name={el.name}
-              price={Number(el.price)}
+              image={el.image === "default.jpg" ? DefaultImage : el.image}
+              name={el.product_name}
               category={el.category}
+              price={parseInt(el.price)}
+              description={el.description}
+              aisle_id={el.aisle_id}
+              department_id={el.department_id}
+              product_id={el.product_id}
             />
           ))}
         </div>
       </div>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-bold pt-7 text-center">
-          Fresh Vegetables
-        </h2>
+        <h2 className="text-2xl font-bold pt-7 text-center">Featured Items</h2>
         <div className="flex gap-4 p-6 overflow-x-auto" ref={slideProductRef}>
           {homeProductCartListVegetables.map((el) => (
             <CardFeature
               key={el._id}
               id={el._id}
-              name={el.name}
+              image={el.image === "default.jpg" ? DefaultImage : el.image}
+              name={el.product_name}
               category={el.category}
-              price={Number(el.price)}
-              image={DefaultImage}
+              price={parseInt(el.price)}
+              description={el.description}
+              aisle_id={el.aisle_id}
+              department_id={el.department_id}
+              product_id={el.product_id}
             />
           ))}
           {/* Duplicate the cards to create the circular effect */}
           {homeProductCartListVegetables.map((el) => (
             <CardFeature
-              key={el._id + "-copy"}
-              id={el._id + "-copy"}
-              name={el.name}
+              key={el._id}
+              id={el._id}
+              image={el.image === "default.jpg" ? DefaultImage : el.image}
+              name={el.product_name}
               category={el.category}
-              image={DefaultImage}
-              price={Number(el.price)}
+              price={parseInt(el.price)}
+              description={el.description}
+              aisle_id={el.aisle_id}
+              department_id={el.department_id}
+              product_id={el.product_id}
             />
           ))}
         </div>

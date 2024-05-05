@@ -89,7 +89,7 @@ const Cart = () => {
                 <CartProduct
                   key={el._id}
                   {...el}
-                  image={DefaultImage}
+                  image={el.image}
                   price={Number(el.price)}
                 />
               ))}
@@ -132,7 +132,7 @@ const Cart = () => {
           <CardFeature
             key={xresponse[0].product_id}
             id={xresponse[0].product_id}
-            image={DefaultImage}
+            image={xresponse[0].image}
             name={xresponse[0].product_name_x}
             category={xresponse[0].category}
             price={xresponse[0].price}
@@ -144,7 +144,11 @@ const Cart = () => {
           <CardFeature
             key={xresponse[1].product_id}
             id={xresponse[1].product_id}
-            image={DefaultImage}
+            image={
+              xresponse[1].image === "default.jpg"
+                ? DefaultImage
+                : xresponse[1].image
+            }
             name={xresponse[1].product_name_x}
             category={xresponse[1].category}
             price={xresponse[1].price}
@@ -156,7 +160,11 @@ const Cart = () => {
           <CardFeature
             key={xresponse[2].product_id}
             id={xresponse[2].product_id}
-            image={DefaultImage}
+            image={
+              xresponse[2].image === "default.jpg"
+                ? DefaultImage
+                : xresponse[2].image
+            }
             name={xresponse[2].product_name_x}
             category={xresponse[2].category}
             price={xresponse[2].price}
@@ -168,7 +176,11 @@ const Cart = () => {
           <CardFeature
             key={xresponse[3].product_id}
             id={xresponse[3].product_id}
-            image={DefaultImage}
+            image={
+              xresponse[3].image === "default.jpg"
+                ? DefaultImage
+                : xresponse[3].image
+            }
             name={xresponse[3].product_name_x}
             category={xresponse[3].category}
             price={xresponse[3].price}

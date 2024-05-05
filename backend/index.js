@@ -112,6 +112,62 @@ const schemaProduct = mongoose.Schema({
 });
 const productModel = mongoose.model("product", schemaProduct);
 
+async function updateImages(list) {
+  try {
+    // Fetch documents from the collection based on the criteria
+    const products = await productModel.find();
+
+    // Iterate over each product document
+    for (let i = 16; i < products.length; i++) {
+      // Modify the image URL for each product
+      const updatedProduct = products[i];
+      updatedProduct.image = list[updatedProduct.department_id]; // Circular indexing for images
+
+      // Save the modified product document
+      await updatedProduct.save();
+      console.log(`Image updated for product ${updatedProduct.product_name}`);
+    }
+
+    console.log("All images updated successfully");
+  } catch (error) {
+    console.error("Error updating images:", error);
+  }
+}
+
+const imageURLs = [
+  "https://example.com/image1.jpg",
+  "https://example.com/image2.jpg",
+  "https://www.tasteofhome.com/wp-content/uploads/2018/01/Quick-Chocolate-Sandwich-Cookies_exps12928_CK133085D05_07_5bC_RMS-1.jpg",
+  "https://cdn.mos.cms.futurecdn.net/iC7HBvohbJqExqvbKcV3pP-1200-80.jpg",
+  "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcThdtogrPsOcQeuKm62SJPEtDkgK6_WNZ02ppcOec5gepVlso_J",
+
+  // Add more image URLs as needed
+];
+
+const list = {
+  1: "https://c.ndtvimg.com/2019-10/rgsj9oc_frozen-foods-_625x300_25_October_19.jpg",
+  2: "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg?w=1155&h=1528",
+  3: "https://etimg.etb2bimg.com/photo/92271034.cms",
+  4: "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg?w=1155&h=1528",
+  5: "https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL3ZpbmVnYXItdXNlcy5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOiIxMjAwIn19fQ==",
+  6: "https://www.viralspices.com/wp-content/uploads/2018/07/Spices.jpg",
+  7: "https://eu-images.contentstack.com/v3/assets/blta023acee29658dfc/blta9f158c45627aa62/651dbb742365a678d7ec7f18/AdobeStock_279692163_Editorial_Use_Only-Beverage-FTR-new.jpg?disable=upscale&width=1200&height=630&fit=crop",
+  8: "https://www.cessnapetstore.in/pub/media/catalog/product/cache/afe255019165e4447f45946ff95a294a/6/1/61zjsdka2nl._sl1000__2.jpg",
+  9: "https://4.imimg.com/data4/YB/HG/ANDROID-46803775/product-500x500.jpeg",
+  10: "https://cdn-magazine.nutrabay.com/wp-content/uploads/2023/02/image7-13.png",
+  11: "https://modernwomanagenda.com/wp-content/uploads/2016/08/Natural-skincare-new.jpg",
+  12: "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg?w=1155&h=1528",
+  13: "https://www.thespruceeats.com/thmb/D45ZZGtWGoe2cMKljb9r_x3oepc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-493239254-b4ee2820e10a4230a747154c88366f86.jpg",
+  14: "https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/10/fruit-salad-best-breakfast-foods-1296x728-body.jpg?w=1155&h=1528",
+  15: "https://www.thespruceeats.com/thmb/U_Jl4KSukouhfsmTyvpR0A8UGx8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cannedfoodsWarren_Price-2d07bf3a98814f7b8f061e800a509627.jpg",
+  16: "https://cdn.britannica.com/94/151894-050-F72A5317/Brown-eggs.jpg",
+  17: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1684892024-91pN6z5C7yL.jpg?crop=1xw:1.00xh;center,top&resize=980:*",
+  18: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1684892024-91pN6z5C7yL.jpg?crop=1xw:1.00xh;center,top&resize=980:*",
+  19: "https://www.tastingtable.com/img/gallery/25-most-popular-snacks-in-america-ranked-worst-to-best/intro-1645492743.jpg",
+  20: "https://www.tastingtable.com/img/gallery/25-most-popular-snacks-in-america-ranked-worst-to-best/intro-1645492743.jpg",
+  21: "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/vegetarian-diet-plan-1296x728-feature.jpg?w=1155&h=1528",
+};
+
 //save product in data
 //api
 app.post("/uploadProduct", async (req, res) => {

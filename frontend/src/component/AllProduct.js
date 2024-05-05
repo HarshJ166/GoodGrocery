@@ -64,7 +64,7 @@ const AllProduct = ({ heading }) => {
                 <CardFeature
                   key={el._id}
                   id={el._id}
-                  image={DefaultImage}
+                  image={el.image === "default.jpg" ? DefaultImage : el.image}
                   name={el.product_name}
                   category={el.category}
                   price={parseInt(el.price)}
